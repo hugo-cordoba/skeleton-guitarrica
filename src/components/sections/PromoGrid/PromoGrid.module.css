@@ -1,0 +1,64 @@
+.section {
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  background-color: var(--color-background);
+}
+
+.promos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.promoCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 200px;
+  border-radius: 20px;
+  border: 1px solid var(--color-background);
+  background-color: var(--color-surface);
+  background-size: cover;
+  background-position: center;
+  padding: 1.75rem;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promoCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.promoTag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--color-background);
+  color: var(--color-text-muted);
+}
+
+.promoTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 220px;
+}
+
+.promoCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+@media (max-width: 640px) {
+  .promos {
+    grid-template-columns: 1fr;
+  }
+}

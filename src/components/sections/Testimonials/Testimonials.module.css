@@ -1,0 +1,203 @@
+.section {
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) 0 clamp(3rem, 8vw, 6rem);
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+.header {
+  max-width: none;
+  margin: 0 auto clamp(1.5rem, 3.5vw, 2.25rem);
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+/* Oculta visualmente sin ocultar para lectores de pantalla (mismo
+   patrón que .sr-only habitual): la lista real y accesible de reseñas,
+   ya que la pista animada de abajo va marcada aria-hidden. */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  list-style: none;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.marquee {
+  overflow: hidden;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+
+.track {
+  --sets: 2;
+  display: flex;
+  width: max-content;
+  animation: testimonialsScroll 42s linear infinite;
+}
+
+.trackReverse {
+  animation-name: testimonialsScroll;
+  animation-duration: 38s;
+  animation-direction: reverse;
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+@keyframes testimonialsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / var(--sets, 2)));
+  }
+}
+
+.card {
+  flex: 0 0 auto;
+  width: min(340px, 82vw);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 18px;
+  background-color: var(--color-surface);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+  margin-right: 1.25rem;
+}
+
+.card:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.starFilled {
+  color: #f5a623;
+}
+
+.ratingValue {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.quote {
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 0.92rem;
+  flex: 1;
+}
+
+.divider {
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.authorName {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.authorRole {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reviewCta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.reviewButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-secondary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reviewButton:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+

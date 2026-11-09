@@ -1,0 +1,133 @@
+.row {
+  display: grid;
+  grid-template-columns: 76px 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  flex: 0 0 auto;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.name:hover {
+  text-decoration: underline;
+}
+
+.variants {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.unitPrice {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stepperButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.stepperButton:hover:not(:disabled) {
+  background-color: var(--color-background);
+}
+
+.stepperButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepperValue {
+  min-width: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.lineTotal {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      'image details'
+      'right right';
+    row-gap: 0.6rem;
+  }
+
+  .imageWrapper {
+    grid-area: image;
+    width: 64px;
+    height: 64px;
+  }
+
+  .details {
+    grid-area: details;
+  }
+
+  .rightCol {
+    grid-area: right;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+}
+
+.stepperButtonDanger:hover:not(:disabled) {
+  color: #e11d48;
+}

@@ -1,0 +1,30 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        R2_PUBLIC_URL: ${R2_PUBLIC_URL}
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@pg-shared:5432/${DB_NAME}
+      NODE_ENV: production
+    networks:
+      - edge
+      - data
+      - internal
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${CLIENT_SLUG}.rule=Host(`${CLIENT_DOMAIN}`)
+      - traefik.http.routers.${CLIENT_SLUG}.entrypoints=websecure
+      - traefik.http.routers.${CLIENT_SLUG}.tls.certresolver=le
+      - traefik.http.services.${CLIENT_SLUG}.loadbalancer.server.port=3000
+
+networks:
+  edge:
+    external: true
+  data:
+    external: true
+  internal:

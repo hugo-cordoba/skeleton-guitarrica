@@ -1,0 +1,511 @@
+.section {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(2rem, 7vw, 5rem) clamp(2rem, 6vw, 4rem);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* ---------- Galería ---------- */
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+  position: sticky;
+  top: 4.5rem;
+}
+
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+.mainImageWrapper {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: var(--color-surface);
+}
+
+.mainImage {
+  object-fit: cover;
+}
+
+.thumbnail {
+  position: relative;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  padding: 0;
+  cursor: pointer;
+  background-color: var(--color-surface);
+  transition: border-color 0.2s ease;
+}
+
+.thumbnail:hover {
+  border-color: var(--color-secondary);
+}
+
+.thumbnailActive {
+  border-color: var(--color-primary);
+}
+
+.thumbnailImage {
+  object-fit: contain;
+  padding: 0.4rem;
+}
+
+/* ---------- Info: cabecera ---------- */
+
+.info {
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+}
+
+.topRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.eyebrowLine {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.badge {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* ---------- Precio ---------- */
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.compareAtPrice {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* ---------- Cantidad y opciones ---------- */
+
+.amountSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.variantGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.variantLabel {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.variantOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.variantOption {
+  min-width: 44px;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-secondary);
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.variantOption:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.variantOptionSelected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.variantOption:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.stepperRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background-color: var(--color-background);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--color-secondary);
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.stepperButton {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.stepperButton:hover:not(:disabled) {
+  background-color: var(--color-background);
+}
+
+.stepperButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepperValue {
+  min-width: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stockText {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Botones principales ---------- */
+
+.addToCart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 1.75rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.addToCart:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background-color: var(--color-primary-light);
+}
+
+.addToCart:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.favoriteButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.95rem 1.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-secondary);
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.favoriteButton:hover {
+  border-color: var(--color-primary);
+}
+
+.favoriteButton[aria-pressed='true'] {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+@keyframes addToCartPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.addToCartPop {
+  animation: addToCartPop 0.35s ease;
+}
+
+.addToCartConfirm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stockMessage {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.feedback {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Pestañas ---------- */
+
+.tabs {
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tabList {
+  display: flex;
+  gap: 1.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.tabButton {
+  padding: 0 0 0.85rem;
+  border: none;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  color: var(--color-text);
+}
+
+.tabButtonActive {
+  color: var(--color-text);
+}
+
+.tabButtonActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+.tabPanel {
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.tabPanel a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.detailsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detailsRow {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.detailsRow dt {
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 100px;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Portátiles: mismo layout de 2 columnas que escritorio, pero más
+   compacto. El disparador real no es el ancho (similar al de un
+   monitor) sino el alto de ventana disponible, así que se usa
+   max-height en vez de/además de max-width. Cubre resoluciones típicas
+   como 1366x768, 1440x900, 1280x800 y 1536x864. */
+@media (min-width: 801px) and (max-height: 820px) {
+  .section {
+    /* La columna de galería pasa de 1.3fr (que dejaba hueco muerto a la
+       derecha de la imagen, ya reducida por max-width) a un ancho fijo
+       que encaja exactamente miniaturas + gap + imagen, así el gap del
+       grid es el único espacio real entre imagen y texto. */
+    grid-template-columns: calc(min(66vh, 880px) + 52px) minmax(0, 560px);
+    justify-content: center;
+    padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem;
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  .gallery {
+    top: 3rem;
+    gap: 0.5rem;
+  }
+
+  .mainImageWrapper {
+    max-width: min(66vh, 880px);
+  }
+
+  .thumbnail {
+    width: 44px;
+    height: 44px;
+  }
+
+  .name {
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  }
+
+  .priceRow {
+    margin-bottom: 1rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .price {
+    font-size: 1.3rem;
+  }
+
+  .amountSection {
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .stepperRow {
+    padding: 0.6rem 0.9rem;
+  }
+
+  .addToCart {
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .favoriteButton {
+    padding: 0.65rem 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tabs {
+    margin-top: 0.5rem;
+    padding-top: 0.85rem;
+  }
+
+  .tabList {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .section {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    position: static;
+  }
+
+  .info {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .thumbnail {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tabList {
+    gap: 1.1rem;
+    overflow-x: auto;
+  }
+}

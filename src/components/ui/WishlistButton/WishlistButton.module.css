@@ -1,0 +1,61 @@
+.button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.08);
+}
+
+.active {
+  color: #e11d48;
+}
+
+@keyframes wishlistPop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.35); }
+  60% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+.pop {
+  animation: wishlistPop 0.45s ease;
+}
+
+@keyframes wishlistHeartHalo {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.65;
+  }
+  70% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+.halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  color: #e11d48;
+  opacity: 0;
+  pointer-events: none;
+  animation: wishlistHeartHalo 0.7s ease-out forwards;
+}
